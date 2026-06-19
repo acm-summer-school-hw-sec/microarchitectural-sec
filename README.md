@@ -1,4 +1,4 @@
-# FDP-Cybersecurity
+# Microarchitectural securitry
 
 ## About
 This repository contains the code and other resources used in the workshop.
