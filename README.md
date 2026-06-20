@@ -1,8 +1,7 @@
 # Microarchitectural securitry
 
 ## About
-This repository contains the code and other resources used in the workshop.
-
+This repository contains resources pertaining to the microarchitectural security demonstration conducted in the ACM Summer School.
 
 ## Directory Structure
 
