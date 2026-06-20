@@ -45,6 +45,6 @@ sudo profile/profile --double 256m mem.msys
 ```
 
 >For newer Rowhammer profiling tools refer to the following links:
-* https://github.com/vusec/trrespass
-* https://github.com/comsec-group/blacksmith
-* https://github.com/comsec-group/phoenix
+>* https://github.com/vusec/trrespass
+>* https://github.com/comsec-group/blacksmith
+>* https://github.com/comsec-group/phoenix
