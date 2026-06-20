@@ -16,7 +16,7 @@
 #include <iostream>
 #include <bitset>
 
-// ******** FDP demo ********
+// ******** ACM-SUMMER-SCHOOL-HW-SEC demo ********
 // encryption key for AES
 unsigned char key[] = {
   0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88,
@@ -37,7 +37,7 @@ void run_encryption_service(int sockfd)
         bzero(buff, 16);
         bzero(ciphertext, 16);
 
-        // ******** FDP demo ********
+        // ******** ACM-SUMMER-SCHOOL-HW-SEC demo ********
         // read the message from attacker and copy it in buffer
         read(sockfd, buff, 16);
         // Encrypt the 16B plaintext received

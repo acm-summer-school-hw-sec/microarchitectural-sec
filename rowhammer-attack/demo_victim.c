@@ -38,7 +38,7 @@ long long get_physical_pfn(uintptr_t v) {
 }
 
 void handle_alarm(int signo) {
-	// ******** FDP Demo ********
+	// ******** ACM-SUMMER-SCHOOL-HW-SEC Demo ********
 	// Victim maps the page deallocated by the attacker
 	char* x = mmap(NULL, 0x1000, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS | MAP_FIXED | MAP_POPULATE, 0, 0);
 	// ************************************
@@ -48,14 +48,14 @@ void handle_alarm(int signo) {
 		exit(1);
 	}
 
-	// ******** FDP Demo ********
+	// ******** ACM-SUMMER-SCHOOL-HW-SEC Demo ********
 	// Fill the page with 0xff
 	for(int i=0;i<0x1000;i++) {
 		x[i] = 0xff;
 	}
 	// ************************************
 
-	// ******** FDP Demo ********
+	// ******** ACM-SUMMER-SCHOOL-HW-SEC Demo ********
 	// Print the values before hammering
 	printf("Values before hammering:\n");
 	int counter = 0;
@@ -69,7 +69,7 @@ void handle_alarm(int signo) {
 	}
 	// ************************************
 
-	// ******** FDP Demo ********
+	// ******** ACM-SUMMER-SCHOOL-HW-SEC Demo ********
 	// Flush the cache
 	for(int i=0;i<0x1000;i+=64) {
 		_mm_clflush(x+i);
@@ -83,7 +83,7 @@ void handle_alarm(int signo) {
 	}
 	// ************************************
 
-	// ******** FDP Demo ********
+	// ******** ACM-SUMMER-SCHOOL-HW-SEC Demo ********
 	// Print the values after hammering
 	printf("Values after hammering:\n");
 	counter = 0;
@@ -102,7 +102,7 @@ void handle_alarm(int signo) {
 
 int main() {
 	setbuf(stdout, NULL);
-	// ******** FDP Demo ********
+	// ******** ACM-SUMMER-SCHOOL-HW-SEC Demo ********
 	// Singal handler for the alarm signal
 	signal(SIGALRM, handle_alarm);
 	// ************************************

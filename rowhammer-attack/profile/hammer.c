@@ -17,7 +17,7 @@ void hammer_ld(uintptr_t a, uintptr_t b, unsigned long iters, long opt)
 #ifdef HAMMER_X86
 
 
-// ******** FDP Demo ********
+// ******** ACM-SUMMER-SCHOOL-HW-SEC Demo ********
 // Hammering function
 void hammer_ld_flush(uintptr_t a, uintptr_t b, unsigned long iters, long opt)
 {
